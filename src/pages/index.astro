@@ -8,39 +8,116 @@ const sortedPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.dat
 const latestPosts = sortedPosts.slice(0, 3);
 ---
 
-<Layout title="rrxs.xyz - 首页">
-  <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">欢迎来到 rrxr.xyz</h1>
-
-  <section class="mb-12">
-    <h2 class="text-3xl font-semibold text-gray-700 mb-6">最新动态 / 精选文章</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {latestPosts.length > 0 ? (
-        latestPosts.map((post) => (
-          <Card
-            title={post.data.title}
-            body={post.data.description}
-            href={`/blog/${post.slug}`}
-          />
-        ))
-      ) : (
-        <p class="col-span-full text-center text-gray-600">暂无文章。</p>
-      )}
+<Layout title="RRXS 数字绿洲 - 知识与创新的交汇点">
+  <!-- Hero Section -->
+  <section class="relative py-20 md:py-32 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-bold mb-6 gradient-heading animate-fade-in">
+          欢迎来到 RRXS<span class="hidden sm:inline-block"> - 数字绿洲</span>
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl animate-fade-in leading-relaxed" style="animation-delay: 0.2s">
+          这里是知识与创新的交汇点，我们提供 AI 学习、心灵成长与商务洞察的一站式平台。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 animate-fade-in" style="animation-delay: 0.4s">
+          <a href="/about" class="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            了解更多
+            <svg class="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-3 bg-transparent border-2 border-border text-foreground font-semibold rounded-lg hover:bg-accent/50 transition-all duration-200 shadow-sm hover:shadow-md">
+            商务合作
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="mb-12">
-    <h2 class="text-3xl font-semibold text-gray-700 mb-6">精选推荐</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <Card title="AI 推荐" body="探索人工智能的奥秘与应用。" href="/ai-learning" />
-      <Card title="心灵成长" body="发现内心的平静与力量。" href="/life" />
-      <Card title="商务洞察" body="提升商业智慧与实践。" href="/business" />
+  <!-- Features Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-b from-background to-muted/30">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-6 gradient-heading">探索 RRXS 的世界</h2>
+        <p class="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          无论您是寻找知识、灵感还是商业机会，我们都能满足您的需求
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <!-- AI Learning Card -->
+        <div class="tech-card group p-6 rounded-xl hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-tech-500/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-tech-500/20 transition-colors">
+            <svg class="w-6 h-6 text-tech-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-card-foreground group-hover:text-tech-600 transition-colors">AI 学习运用</h3>
+          <p class="text-muted-foreground mb-4 leading-relaxed">探索人工智能的奥秘，学习前沿技术应用，掌握 AI 时代的核心技能。</p>
+          <a href="/ai-learning" class="inline-flex items-center text-tech-500 hover:text-tech-600 font-medium transition-colors">
+            开始学习
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Life Card -->
+        <div class="tech-card group p-6 rounded-xl hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-accent1-500/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-accent1-500/20 transition-colors">
+            <svg class="w-6 h-6 text-accent1-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-card-foreground group-hover:text-accent1-500 transition-colors">心灵生活</h3>
+          <p class="text-muted-foreground mb-4 leading-relaxed">发现内心的平静与力量，分享生活感悟与成长故事，构建美好人生。</p>
+          <a href="/life" class="inline-flex items-center text-accent1-500 hover:text-accent1-600 font-medium transition-colors">
+            探索内心
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Business Card -->
+        <div class="tech-card group p-6 rounded-xl hover:scale-105 transition-all duration-300">
+          <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-card-foreground group-hover:text-primary transition-colors">商务板块</h3>
+          <p class="text-muted-foreground mb-4 leading-relaxed">提升商业智慧与实践，分享营销策略、投资理念和创业经验。</p>
+          <a href="/business" class="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors">
+            商务洞察
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="text-center mb-12">
-    <h2 class="text-3xl font-semibold text-gray-700 mb-6">联系我们</h2>
-    <p class="text-lg text-gray-600 mb-4">如果您有任何疑问或合作意向，欢迎随时联系我们。</p>
-    <a href="/contact" class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-xl shadow-card hover:bg-blue-700 transition duration-300">立即联系</a>
+  <!-- CTA Section -->
+  <section class="py-16 md:py-24 bg-gradient-to-r from-primary/10 via-accent/10 to-accent1-500/10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-display font-bold mb-6 gradient-heading">
+          准备好开始您的数字绿洲之旅了吗？
+        </h2>
+        <p class="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+          无论您是寻找知识、灵感还是商业机会，我们都期待与您携手前行。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            开始对话
+          </a>
+          <a href="/about" class="inline-flex items-center justify-center px-8 py-4 bg-transparent border-2 border-border text-foreground font-semibold rounded-lg hover:bg-accent/50 transition-all duration-200">
+            了解更多
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 </Layout>
-

@@ -2,26 +2,46 @@
 import Header from '../components/Header.astro';
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = "RRXS 数字绿洲 - 知识与创新的交汇点" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN" class="h-full">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
 		<title>{title}</title>
+
+		<!-- Preload fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 		<link rel="stylesheet" href="../styles/global.css" />
 	</head>
-	<body class="font-sans bg-gray-100 text-gray-900 antialiased">
-		<Header />
-		<main class="container mx-auto mt-8 p-4">
-			<slot />
-		</main>
+	<body class="min-h-full bg-background text-foreground font-sans antialiased">
+		<!-- Background gradient -->
+		<div class="fixed inset-0 bg-gradient-to-br from-tech-100/70 to-accent1-300/20 -z-10" />
+		<div class="fixed inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(24,144,255,0.1),transparent_50%)] -z-10" />
+
+		<div class="relative min-h-screen flex flex-col">
+			<Header />
+			<main class="flex-1">
+				<slot />
+			</main>
+			<footer class="mt-auto py-12 bg-background/80 backdrop-blur-sm border-t border-border">
+				<div class="container mx-auto px-4 text-center text-muted-foreground">
+					<p>&copy; 2024 RRXS. 保留所有权利</p>
+				</div>
+			</footer>
+		</div>
 	</body>
 </html>
-
