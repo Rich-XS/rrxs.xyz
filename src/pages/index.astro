@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const allBlogPosts = await getCollection('blog');
+const sortedPosts = allBlogPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const latestPosts = sortedPosts.slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="rrxs.xyz - 首页">
+  <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">欢迎来到 rrxr.xyz</h1>
+
+  <section class="mb-12">
+    <h2 class="text-3xl font-semibold text-gray-700 mb-6">最新动态 / 精选文章</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {latestPosts.length > 0 ? (
+        latestPosts.map((post) => (
+          <Card
+            title={post.data.title}
+            body={post.data.description}
+            href={`/blog/${post.slug}`}
+          />
+        ))
+      ) : (
+        <p class="col-span-full text-center text-gray-600">暂无文章。</p>
+      )}
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-3xl font-semibold text-gray-700 mb-6">精选推荐</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Card title="AI 推荐" body="探索人工智能的奥秘与应用。" href="/ai-learning" />
+      <Card title="心灵成长" body="发现内心的平静与力量。" href="/life" />
+      <Card title="商务洞察" body="提升商业智慧与实践。" href="/business" />
+    </div>
+  </section>
+
+  <section class="text-center mb-12">
+    <h2 class="text-3xl font-semibold text-gray-700 mb-6">联系我们</h2>
+    <p class="text-lg text-gray-600 mb-4">如果您有任何疑问或合作意向，欢迎随时联系我们。</p>
+    <a href="/contact" class="inline-block bg-primary text-white font-bold py-3 px-6 rounded-xl shadow-card hover:bg-blue-700 transition duration-300">立即联系</a>
+  </section>
 </Layout>
+
